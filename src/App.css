@@ -1,38 +1,173 @@
-.App {
-  text-align: center;
+* {
+    padding: 0;
+    margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Navbar */
+.nav--img {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem;
+    padding: 1.5rem 0vh;
+    border-bottom: 2px solid black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* Main Content */
+.main--content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* overflow: auto; */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+/* Card */
+.card {
+    width: 21.875rem;
+    height: 31.25rem;
+    /* background-color: aqua; */
+    border: 0.5px solid black;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-radius: 1rem;
+    /* border-top-right-radius: 0;
+    border-bottom-right-radius: 0; */
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    position: relative;
+
+    overflow-y: auto;
 }
 
-.App-link {
-  color: #61dafb;
+/* #style-1::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#style-1::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+} */
+
+#style-3::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background : rgba(0,0,0,0.0); */
+    margin: 1rem;
+}
+
+#style-3::-webkit-scrollbar {
+    width: 6px;
+}
+
+#style-3::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 5rem;
+    margin: 1rem;
+}
+
+.card--header {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    height: 60px;
+    background-color: brown;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    color: white;
+    border-radius: 3px 3px 0 0;
+    padding-left: 1.5rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.card--title {
+    font-size: 17px;
+    font-weight: 600;
+    /* color: #333; */
+    color: white;
+}
+
+.card--number {
+    border-radius: 100%;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* .card--content--grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
+} */
+
+/* Card content */
+
+.card--content--container {
+    padding: "1.5rem";
+    flex: 1;
+    flex-direction: "column";
+    border: "1px solid black";
+    position: 'relative';
+    overflow-y: "auto";
+}
+
+.card--content {
+    background-color: black;
+    margin: 5px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: 20rem;
+}
+
+.card--content>input {
+    max-width: 21rem;
+    background-color: inherit;
+    border: none;
+    max-height: 20px;
+    color: white;
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.card--content--img {
+    height: 2.8rem;
+    padding: 5px;
+    margin-right: 1.3rem;
+    margin-left: 1rem;
+}
+
+/* .grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
+} */
+
+.card--container {
+    background-color: bisque;
+    margin-top: 0;
+    flex: 1;
+    flex-direction: column;
+    border: 1px solid black;
+    position: relative;
+    /* overflow-y: auto; */
+
 }
