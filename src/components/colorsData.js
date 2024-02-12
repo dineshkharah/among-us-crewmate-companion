@@ -1,4 +1,4 @@
-let tasksData = {
+let colorsData = {
     1: { id: "1", image: "images/blue.png" },
     2: { id: "2", image: "images/brown.png" },
     3: { id: "3", image: "images/gray.png" },
@@ -13,4 +13,4 @@ let tasksData = {
     12: { id: "12", image: "images/yellow.png" },
 }
 
-export default tasksData
+export default colorsData

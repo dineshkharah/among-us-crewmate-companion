@@ -1,32 +1,32 @@
-import React from 'react'
-import Card from './Card'
-import cardData from './cardData'
+// import React from 'react'
+// import Card from './Card'
+// import cardData from './cardData'
 
-const Main = (props) => {
+// const Main = (props) => {
 
-    const titleData = cardData.map(items => {
-        return (
+//     const titleData = cardData.map(items => {
+//         return (
 
-            <Card
-                key={items.id}
-                items={items}
-            />
+//             <Card
+//                 key={items.id}
+//                 items={items}
+//             />
 
-        )
-    })
-
-
-    return (
-
-        <div
-            className='main--content '>
-            {titleData}
-        </div>
+//         )
+//     })
 
 
+//     return (
 
-    )
-}
+//         <div
+//             className='main--content '>
+//             {titleData}
+//         </div>
 
-export default Main
+
+
+//     )
+// }
+
+// export default Main
 

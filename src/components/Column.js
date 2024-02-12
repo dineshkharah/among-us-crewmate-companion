@@ -1,58 +1,69 @@
-import React from 'react'
-import { Draggable, Droppable } from 'react-beautiful-dnd'
+import React from 'react';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 
-const Column = ({ column, tasks, onDragEnd }) => {
+const Column = ({ column, colors, onDragEnd, inputValues, setInputValues }) => {
     return (
-        <>
-            <div className='card' id='style-3'>
-                <div className='card--header'>
-                    <span className='card--title'>
-                        {column.title}
-                    </span>
-                </div>
+      <>
+        <div className='card' id='scroll-hidden'>
+          <div className='card--header'>
+            <span className='card--title'>{column.title}</span>
+          </div>
 
-                <Droppable
-                    droppableId={column.id}
+          <div className='card-content--container' id='style-3'>
+            <Droppable droppableId={column.id} >
+              {(droppableProvided, droppableSnapshot) => (
+                <div
+                  ref={droppableProvided.innerRef}
+                  {...droppableProvided.droppableProps}
+                  className='card--container'
                 >
-                    {(droppableProvided, droppableSnapshot) => (
+                  {colors.map((color, index) => (
+                    <Draggable
+                      key={color.id}
+                      draggableId={`${color.id}`}
+                      index={index}
+                    >
+                      {(draggbleProvided, draggableSnapshot) => (
                         <div
-                            ref={droppableProvided.innerRef}
-                            {...droppableProvided.droppableProps}
-                            className='card--container'
+                          ref={draggbleProvided.innerRef}
+                          {...draggbleProvided.draggableProps}
+                          {...draggbleProvided.dragHandleProps}
+                          className='card--content '
                         >
-                            {tasks.map((task, index) => (
-                                <Draggable
-                                    key={task.id}
-                                    draggableId={`${task.id}`}
-                                    index={index}
-                                >
-                                    {(draggbleProvided, draggableSnapshot) =>
-                                        <div
-                                            ref={draggbleProvided.innerRef}
-                                            {...draggbleProvided.draggableProps}
-                                            {...draggbleProvided.dragHandleProps}
-                                            className='card--content '
-                                        >
-                                            <img src={task.image} alt="" className='card--content--img' />
-                                            <input
-                                                type="text"
-                                                placeholder={`Player ${task.id} `}
-                                                {...draggbleProvided.dragHandleProps}
-                                            />
-                                        </div>
-                                    }
-                                </Draggable>
-                            ))}
-                            {droppableProvided.placeholder}
+                          <img src={color.image} alt='' className='card--content--img' />
+                          
+                          <input
+                            type='text'
+                            placeholder={`Player ${color.id}`}
+                            // Retrieve user input from local storage
+                            value={inputValues[`playerInput-${color.id}`] || ''}
+                            onChange={(e) => {
+                              // Update input values state immediately on typing
+                              setInputValues((prevInputValues) => ({
+                                ...prevInputValues,
+                                [`playerInput-${color.id}`]: e.target.value,
+                              }));
+    
+                              // Save to local storage immediately
+                              const newInputValues = {
+                                ...inputValues,
+                                [`playerInput-${color.id}`]: e.target.value,
+                              };
+                              localStorage.setItem('inputValues', JSON.stringify(newInputValues));
+                            }}
+                          />
                         </div>
-
-                    )}
-
-                </Droppable>
-
-            </div>
-        </>
-    )
-}
-
-export default Column
+                      )}
+                    </Draggable>
+                  ))}
+                  {droppableProvided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </div>
+        </div>
+      </>
+    );
+  };
+  
+  export default Column;
