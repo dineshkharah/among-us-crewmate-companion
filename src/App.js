@@ -5,6 +5,9 @@ import Column from './components/Column';
 import Navbar from './components/Navbar';
 import colorsData from './components/colorsData';
 import columnsData from './components/cardData';
+import { ExclamationCircleFilled } from '@ant-design/icons';
+import { Modal } from 'antd';
+const { confirm } = Modal;
 
 export default function App() {
   const storedState = JSON.parse(localStorage.getItem('appState'));
@@ -56,65 +59,10 @@ export default function App() {
     return newColumn;
   };
 
-  // const onDragEnd = (result) => {
-  //   const { destination, source } = result;
-
-  //   if (!destination) return;
-
-  //   const sourceCol = state.columns[source.droppableId];
-  //   const destinationCol = state.columns[destination.droppableId];
-
-  //   let newColumn; // Explicitly define newColumn
-
-  //   if (sourceCol.id === destinationCol.id) {
-  //     newColumn = reorderColumnList(
-  //       sourceCol,
-  //       source.index,
-  //       destination.index
-  //     );
-
-  //     const newState = {
-  //       ...state,
-  //       columns: {
-  //         ...state.columns,
-  //         [newColumn.id]: newColumn,
-  //       },
-  //     };
-
-  //     saveToLocalStorage(newState, inputValues);
-  //     return;
-  //   }
-
-  //   const startColorIds = Array.from(sourceCol.ColorIds);
-  //   const [removed] = startColorIds.splice(source.index, 1);
-  //   const newStartCol = {
-  //     ...sourceCol,
-  //     ColorIds: startColorIds,
-  //   };
-
-  //   const endColorIds = Array.from(destinationCol.ColorIds);
-  //   endColorIds.splice(destination.index, 0, removed);
-  //   const newEndCol = {
-  //     ...destinationCol,
-  //     ColorIds: endColorIds,
-  //   };
-
-  //   const newState = {
-  //     ...state,
-  //     columns: {
-  //       ...state.columns,
-  //       [newStartCol.id]: newStartCol,
-  //       [newEndCol.id]: newEndCol,
-  //     },
-  //   };
-
-  //   saveToLocalStorage(newState, inputValues);
-  // };
   const onDragEnd = (result) => {
     const { destination, source } = result;
 
     if (!destination) return;
-
     const sourceCol = state.columns[source.droppableId];
     const destinationCol = state.columns[destination.droppableId];
 
@@ -128,11 +76,6 @@ export default function App() {
       const reorderedColors = Array.from(sourceCol.ColorIds);
       reorderedColors.splice(source.index, 1);
       reorderedColors.splice(destination.index, 0, sourceCol.ColorIds[source.index]);
-
-      // const newColumn = {
-      //   ...sourceCol,
-      //   ColorIds: reorderedColors,
-      // };
 
       const newState = {
         ...state,
@@ -175,7 +118,6 @@ export default function App() {
     saveToLocalStorage(newState, inputValues);
   };
 
-
   // Function to reset positions while retaining typed content
   const resetPositionsRetainContent = () => {
     const resetState = {
@@ -200,26 +142,57 @@ export default function App() {
     localStorage.removeItem('inputValues'); // Remove from local storage
   };
 
+  // Modal
+  const newGameWarning = () => {
+    confirm({
+      title: 'Reset Positions and Retain Names?',
+      icon: <ExclamationCircleFilled />,
+      content: `This action resets item positions while keeping typed content intact. Are you sure you want to proceed?`,
+      okText: 'Yes',
+      // okType: 'danger',
+      cancelText: 'No',
+      onOk() {
+        resetPositionsRetainContent()
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  };
+  const resetGameWarning = () => {
+    confirm({
+      title: 'Reset Positions and Clear Names?',
+      icon: <ExclamationCircleFilled />,
+      content: `This action resets item positions and clears typed content. Are you sure you want to proceed?`,
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
+      onOk() {
+        resetPositionsClearContent()
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  };
+
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-
       <main className='main-container'>
         <Navbar />
 
         <section className=' btn-container'>
-          <button className="btn btn-outline-primary" onClick={resetPositionsRetainContent}>New game</button>
-          <button className='btn btn-outline-tertiary' onClick={resetPositionsClearContent}>Reset game</button>
+          <button className="btn btn-outline-primary" onClick={newGameWarning}>New game</button>
+          <button className='btn btn-outline-tertiary' onClick={resetGameWarning}>Reset game</button>
         </section>
 
         <section className='main--content'>
-
           {state.columnOrder.map((columnId) => {
             const column = state.columns[columnId];
             const colors = column.ColorIds.map(
               (ColorId) => state.colors[ColorId]
             );
-
             return (
               <Column
                 key={column.id}
