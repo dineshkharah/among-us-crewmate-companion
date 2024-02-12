@@ -8,7 +8,7 @@ import columnsData from './components/cardData';
 
 export default function App() {
   const storedState = JSON.parse(localStorage.getItem('appState'));
-  
+
   // Use stored state if available, otherwise use the initial state
   const [state, setState] = useState(
     storedState || {
@@ -112,12 +112,12 @@ export default function App() {
   // };
   const onDragEnd = (result) => {
     const { destination, source } = result;
-  
+
     if (!destination) return;
-  
+
     const sourceCol = state.columns[source.droppableId];
     const destinationCol = state.columns[destination.droppableId];
-  
+
     if (sourceCol.id === destinationCol.id) {
       // If dragging within the same column
       const newColumn = reorderColumnList(
@@ -128,12 +128,12 @@ export default function App() {
       const reorderedColors = Array.from(sourceCol.ColorIds);
       reorderedColors.splice(source.index, 1);
       reorderedColors.splice(destination.index, 0, sourceCol.ColorIds[source.index]);
-  
+
       // const newColumn = {
       //   ...sourceCol,
       //   ColorIds: reorderedColors,
       // };
-  
+
       const newState = {
         ...state,
         columns: {
@@ -141,28 +141,28 @@ export default function App() {
           [newColumn.id]: newColumn,
         },
       };
-  
+
       saveToLocalStorage(newState, inputValues);
       return;
     }
-  
+
     // If dragging between different columns
     const startColorIds = Array.from(sourceCol.ColorIds);
     const [removed] = startColorIds.splice(source.index, 1);
-  
+
     const newStartCol = {
       ...sourceCol,
       ColorIds: startColorIds,
     };
-  
+
     const endColorIds = Array.from(destinationCol.ColorIds);
     endColorIds.splice(destination.index, 0, removed);
-  
+
     const newEndCol = {
       ...destinationCol,
       ColorIds: endColorIds,
     };
-  
+
     const newState = {
       ...state,
       columns: {
@@ -171,13 +171,13 @@ export default function App() {
         [newEndCol.id]: newEndCol,
       },
     };
-  
+
     saveToLocalStorage(newState, inputValues);
   };
 
 
-   // Function to reset positions while retaining typed content
-   const resetPositionsRetainContent = () => {
+  // Function to reset positions while retaining typed content
+  const resetPositionsRetainContent = () => {
     const resetState = {
       ...state,
       columns: {
@@ -199,18 +199,21 @@ export default function App() {
     setInputValues({}); // Clear typed content
     localStorage.removeItem('inputValues'); // Remove from local storage
   };
-  
+
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      
-      <div>
+
+      <main className='main-container'>
         <Navbar />
-        <div className='buttons-container'>
-          <button className='button' onClick={resetPositionsRetainContent}>New game</button>
-          <button className='button delete' onClick={resetPositionsClearContent}>Reset game</button>
-        </div>
-        <div className='main--content'>
+
+        <section className=' btn-container'>
+          <button className="btn btn-outline-primary" onClick={resetPositionsRetainContent}>New game</button>
+          <button className='btn btn-outline-tertiary' onClick={resetPositionsClearContent}>Reset game</button>
+        </section>
+
+        <section className='main--content'>
+
           {state.columnOrder.map((columnId) => {
             const column = state.columns[columnId];
             const colors = column.ColorIds.map(
@@ -228,9 +231,8 @@ export default function App() {
               />
             );
           })}
-        </div>
-        
-      </div>
+        </section>
+      </main>
     </DragDropContext>
   );
 }
