@@ -18,7 +18,7 @@ Crewmate Companion is a web application designed to help players stay organized 
 
 To contribute to this project or customize it for your own use, you can start by forking the repository. Follow these steps:
 
-1. Go to the repository on GitHub: [Link to Repository](https://github.com/yourusername/crewmate-companion)
+1. Go to the repository on GitHub: [Link to Repository](https://github.com/dineshkharah/among-us-crewmate-companion.git)
 2. Click the "Fork" button in the top right corner of the page.
 3. Wait for the forking process to complete.
 
