@@ -1,38 +1,141 @@
-.App {
-  text-align: center;
+* {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: unset !important;
+    /* it is used to disable smooth scroll */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Navbar */
+.nav--img {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    max-width: 100vw;
+    padding-inline: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav--img img {
+    max-width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Main Content */
+.main--content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-inline: 2rem;
+    gap: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+main.main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Button */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Column */
+.column-content {
+    max-height: calc(100vh - 20rem);
+    overflow: auto;
+}
+
+.column-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.column-content::-webkit-scrollbar-thumb {
+    background-color: #d3d9e3;
+    border-radius: 5rem;
+    margin: 1rem;
+    margin-top: 60px;
+}
+
+/* Card content */
+.card {
+    width: 18rem;
+
+}
+
+.card--content.alert {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 20rem;
+    padding-block: 0.2rem;
+    margin: 0;
+    gap: 1rem;
+}
+
+.card--content>input {
+    max-width: 21rem;
+    background-color: inherit;
+    border: none;
+    max-height: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card--content--img {
+    height: 2.8rem;
+    padding: 5px;
+}
+
+.card--container {
+    margin-top: 0;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    position: relative;
+    min-height: 10px;
+    ;
+}
+
+
+/* Modal */
+/* ModalTemplate.css */
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 25rem;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-para {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 22.75rem;
+
+}
+
+.btn-modal {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.margin {
+    margin: 1rem 0;
 }
