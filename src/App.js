@@ -5,9 +5,7 @@ import Column from './components/Column';
 import Navbar from './components/Navbar';
 import colorsData from './components/colorsData';
 import columnsData from './components/cardData';
-import { ExclamationCircleFilled } from '@ant-design/icons';
-import { Modal } from 'antd';
-const { confirm } = Modal;
+import ModalTemplate from './components/ModalTemplate';
 
 export default function App() {
   const storedState = JSON.parse(localStorage.getItem('appState'));
@@ -142,40 +140,28 @@ export default function App() {
     localStorage.removeItem('inputValues'); // Remove from local storage
   };
 
-  // Modal
-  const newGameWarning = () => {
-    confirm({
-      title: 'Reset Positions and Retain Names?',
-      icon: <ExclamationCircleFilled />,
-      content: `This action resets item positions while keeping typed content intact. Are you sure you want to proceed?`,
-      okText: 'Yes',
-      // okType: 'danger',
-      cancelText: 'No',
-      onOk() {
-        resetPositionsRetainContent()
-      },
-      onCancel() {
-        console.log('Cancel');
-      },
-    });
-  };
-  const resetGameWarning = () => {
-    confirm({
-      title: 'Reset Positions and Clear Names?',
-      icon: <ExclamationCircleFilled />,
-      content: `This action resets item positions and clears typed content. Are you sure you want to proceed?`,
-      okText: 'Yes',
-      okType: 'danger',
-      cancelText: 'No',
-      onOk() {
-        resetPositionsClearContent()
-      },
-      onCancel() {
-        console.log('Cancel');
-      },
-    });
+  // Modals
+  const [showNewGameModal, setShowNewGameModal] = useState(false);
+  const [showResetGameModal, setShowResetGameModal] = useState(false);
+
+  const handleNewGameConfirm = () => {
+    resetPositionsRetainContent();
+    setShowNewGameModal(false);
   };
 
+  const handleNewGameCancel = () => {
+    setShowNewGameModal(false);
+  };
+
+
+  const handleResetGameConfirm = () => {
+    resetPositionsClearContent();
+    setShowResetGameModal(false);
+  };
+
+  const handleResetGameCancel = () => {
+    setShowResetGameModal(false);
+  };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -183,8 +169,8 @@ export default function App() {
         <Navbar />
 
         <section className=' btn-container'>
-          <button className="btn btn-outline-primary" onClick={newGameWarning}>New game</button>
-          <button className='btn btn-outline-tertiary' onClick={resetGameWarning}>Reset game</button>
+          <button className="btn btn-outline-primary" onClick={() => setShowNewGameModal(true)}> New game</button>
+          <button className='btn btn-outline-tertiary' onClick={() => setShowResetGameModal(true)}>Reset game</button>
         </section>
 
         <section className='main--content'>
@@ -205,7 +191,27 @@ export default function App() {
             );
           })}
         </section>
+
+        {/* New Game */}
+        <ModalTemplate
+          isOpen={showNewGameModal}
+          onRequestClose={handleNewGameCancel}
+          title="New Game?"
+          content="This action resets item positions while keeping typed content intact. Are you sure you want to proceed?"
+          onConfirm={handleNewGameConfirm}
+          onCancel={handleNewGameCancel}
+        />
+
+        {/* Reset Game */}
+        <ModalTemplate
+          isOpen={showResetGameModal}
+          onRequestClose={handleResetGameCancel}
+          title="Reset Game?"
+          content="This action resets item positions and clears typed content. Are you sure you want to proceed?"
+          onConfirm={handleResetGameConfirm}
+          onCancel={handleResetGameCancel}
+        />
       </main>
-    </DragDropContext>
+    </DragDropContext >
   );
 }

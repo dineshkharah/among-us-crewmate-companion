@@ -1,7 +1,8 @@
 * {
     padding: 0;
     margin: 0;
-    scroll-behavior: unset !important; /* it is used to disable smooth scroll */
+    scroll-behavior: unset !important;
+    /* it is used to disable smooth scroll */
 }
 
 /* Navbar */
@@ -26,14 +27,14 @@
     gap: 2rem;
 }
 
-main.main-container{
+main.main-container {
     display: flex;
     flex-direction: column;
     gap: 2rem;
 }
 
 /* Button */
-.btn-container{
+.btn-container {
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -57,9 +58,9 @@ main.main-container{
 }
 
 /* Card content */
-.card{
+.card {
     width: 18rem;
-    
+
 }
 
 .card--content.alert {
@@ -92,5 +93,49 @@ main.main-container{
     gap: 1rem;
     flex-direction: column;
     position: relative;
-    min-height: 10px;;
+    min-height: 10px;
+    ;
+}
+
+
+/* Modal */
+/* ModalTemplate.css */
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 22.75rem;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-para {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 22.75rem;
+
+}
+
+.btn-modal {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.margin {
+    margin: 1rem 0;
 }
