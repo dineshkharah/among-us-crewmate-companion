@@ -140,7 +140,7 @@ export default function App() {
     localStorage.removeItem('inputValues'); // Remove from local storage
   };
 
-  // Modals
+  // Modals state handling
   const [showNewGameModal, setShowNewGameModal] = useState(false);
   const [showResetGameModal, setShowResetGameModal] = useState(false);
 
@@ -197,7 +197,9 @@ export default function App() {
           isOpen={showNewGameModal}
           onRequestClose={handleNewGameCancel}
           title="New Game?"
-          content="This action resets item positions while keeping typed content intact. Are you sure you want to proceed?"
+          content="Are you sure you want to start a new game?"
+          confirmText="Yes, start a new game"
+          cancelText="No, go back"
           onConfirm={handleNewGameConfirm}
           onCancel={handleNewGameCancel}
         />
@@ -207,7 +209,9 @@ export default function App() {
           isOpen={showResetGameModal}
           onRequestClose={handleResetGameCancel}
           title="Reset Game?"
-          content="This action resets item positions and clears typed content. Are you sure you want to proceed?"
+          content="Are you sure you want to reset game? All names will be cleared"
+          confirmText="Sure, reset game"
+          cancelText="No, go back"
           onConfirm={handleResetGameConfirm}
           onCancel={handleResetGameCancel}
         />
