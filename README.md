@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Crewmate Companion
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Crewmate Companion is a web application designed to help players stay organized while playing Among Us. It allows users to keep track of players and their status.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Installation](#installation)
+  - [Forking the Repository](#forking-the-repository)
+  - [Cloning the Repository](#cloning-the-repository)
+  - [Running the Application](#running-the-application)
+- [Usage](#usage)
+- [Tech Stack](#tech-stack)
+- [Features](#features)
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Forking the Repository
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To contribute to this project or customize it for your own use, you can start by forking the repository. Follow these steps:
 
-### `npm test`
+1. Go to the repository on GitHub: [Link to Repository](https://github.com/yourusername/crewmate-companion)
+2. Click the "Fork" button in the top right corner of the page.
+3. Wait for the forking process to complete.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Cloning the Repository
 
-### `npm run build`
+Once you've forked the repository, you can clone it to your local machine. Open your terminal and execute the following command:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/yourusername/crewmate-companion.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Running the Application
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Navigate to the project directory:
 
-### `npm run eject`
+```bash
+cd crewmate-companion
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Install dependencies:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Start the development server:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+4. Open your web browser and go to http://localhost:3000 to view the application.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Upon opening the application, users can see the main interface which displays columns representing different aspects of the game.
+- Input player names and associate them with colours.
+- Users can drag and drop cards within and between columns to organize players and their status.
+- Use the "New game" button to reset positions of players to the “Unknown” column while retaining player information.
+- Use the "Reset game" button to reset positions of players to the “Unknown” column and clear player information.
 
-### Code Splitting
+## Tech Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- HTML: Markup language used for structuring web pages.
+- CSS: Styling language used for styling HTML elements.
+- React: JavaScript library for building user interfaces.
+- React Beautiful DnD: React implementation of the drag and drop library for beautiful and accessible drag and drop interactions.
 
-### Analyzing the Bundle Size
+## Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Drag and drop players between different categories.
+- Input player names and associate them with colours of their character.
+- Organize players into categories such as " Unknown", "Dead", "Suspect", or "Innocent".
+- Responsive Design.
+- Local storage integration to save user input and state.
