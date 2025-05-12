@@ -33,7 +33,7 @@ const Column = ({ column, colors, onDragEnd, inputValues, setInputValues }) => {
 
                             <input
                               type='text'
-                              placeholder={`Player name`}
+                              placeholder={`${color.color}`}
                               // Retrieve user input from local storage
                               value={inputValues[`playerInput-${color.id}`] || ''}
                               onChange={(e) => {
